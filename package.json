@@ -23,8 +23,11 @@
   },
   "homepage": "https://github.com/Dethnull/samanage.js#readme",
   "dependencies": {
-    "bunyan": "^1.8.5",
+    "bunyan": "^1.8.12",
     "chalk": "^1.1.3",
-    "request": "^2.79.0"
+    "co": "^4.6.0",
+    "co-prompt": "^1.0.0",
+    "jsonfile": "^3.0.1",
+    "request": "^2.81.0"
   }
 }
