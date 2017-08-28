@@ -22,9 +22,6 @@ let logger  = bunyan.createLogger({
 });
 
 
-//let utils = require(__dirname+'/utils'); // import createClone into the object chain.
-
-
 let Samanage = function (config) {
     this._verbose   = 0;
     //this._debug     = config.debug || 0;
@@ -54,6 +51,10 @@ let Samanage = function (config) {
             "awaiting_input": (config && config.stateID.awaiting_input) ? config.stateID.awaiting_input  : '',
             "on_hold":        (config && config.stateID.on_hold)        ? config.stateID.on_hold         : '',
             "new":            (config && config.stateID["new"])         ? config.stateID["new"]          : ''
+        },
+        template: {
+            solution: "solution",
+            incident: "incident"
         }
     };
 
@@ -188,6 +189,38 @@ Samanage.prototype.utils = {
 };
 
 
+/**
+ *  Takes a query string or URL directly from Samanage and converts it to an object. This object can then be used
+ * with the 'qs' option for request. incidents.search() calls this function if 'config' is a string.
+ *
+ * @param {String} qString query string to convert to an object for searching
+ * @returns {Object}
+ */
+Samanage.prototype.createSearchObject = function(qString) {
+
+    let y = qString.split("?");
+
+    if (y.length > 1) { qString = y[1]; }
+
+    let x = decodeURIComponent(qString).split("&").filter(Boolean);
+
+    let len = x.length;
+    let out = { };
+
+    for (let i = 0; i < len; i++) {
+        let curs = x[i].split("=");
+
+        if (out[curs[0]]) {
+            out[curs[0]].push(curs[1]);
+        } else {
+            out[curs[0]] = [curs[1]];
+        }
+    }
+
+    return out;
+};
+
+
 Samanage.prototype.categories         = require(__dirname + '/lib/categories'           );
 Samanage.prototype.changes            = require(__dirname + '/lib/changes'              );
 Samanage.prototype.comments           = require(__dirname + '/lib/comments'             );
@@ -216,6 +249,5 @@ Samanage.prototype.tasks              = require(__dirname + '/lib/tasks'        
 Samanage.prototype.timeTracks         = require(__dirname + '/lib/timeTracks'           );
 Samanage.prototype.users              = require(__dirname + '/lib/users'                );
 Samanage.prototype.vendors            = require(__dirname + '/lib/vendors'              );
-
 
 module.exports = Samanage;
