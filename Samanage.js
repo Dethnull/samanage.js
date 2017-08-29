@@ -10,9 +10,7 @@ let logstream = require('./logstream');
 let logger  = bunyan.createLogger({
     name: 'Samanage.js v' + smConfig.version,
     streams: [{
-        type: "rotating-file",
         path: "./logs/Samanage.js.log",
-        period: "1d",
         level: "debug"
     },{
         type: "raw",
@@ -75,47 +73,6 @@ let Samanage = function (config) {
         json: true
     });
 };
-
-
-/**
- *  Fairly simple authentication method as Samanage only allows for basic authentication over HTTPS
- *
- * @param username   -- Samanage Username Or just the Bearer token
- * @param password   -- Samanage Password
- * @returns request.defaults() object with the username/password basic or function to basic them iva auth.basic(u,p)
- */
-/*Samanage.prototype.auth = function (username, password) {
-    let self = this;
-
-    if (username && password) return this.auth().basic(username, password);
-    if (username) return this.auth().bearer(username);
-
-    let basic = function (username, password) {
-        self._request = self._request.defaults({
-            auth: {
-                username: (username.username || username.user || username),
-                password: (username.password || username.pass || password)
-            }
-        })
-    };
-
-    let bearer = function(token) {
-        if (self._api.header.accept != self._api.version[3]) {
-            logger.fatal('Bearer token used, invalid api version for bearer token.');
-            logger.fatal(`Found: ${self._api.header.accept}, Required: ${self._api.version[3]}`);
-            process.exit(1);
-        }
-
-        self._request = self._request.defaults({
-            auth: { bearer: token }
-        })
-    };
-    
-    return {
-        basic: basic,
-        bearer: bearer
-    };
-};*/
 
 Samanage.prototype.auth = function(auth) {
 
