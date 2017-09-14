@@ -178,6 +178,8 @@ Samanage.prototype.createSearchObject = function(qString) {
 };
 
 
+Samanage.prototype.MessageTemplate    = require(__dirname + '/lib/MessageTemplate'      );
+
 Samanage.prototype.categories         = require(__dirname + '/lib/categories'           );
 Samanage.prototype.changes            = require(__dirname + '/lib/changes'              );
 Samanage.prototype.comments           = require(__dirname + '/lib/comments'             );

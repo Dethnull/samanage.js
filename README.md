@@ -16,7 +16,7 @@ Samanage API implementation for NodeJS
 
 ```js
 // These ID's are used for the resolution states for incidents. You can obtain these ID's by looking at the requests made through the GUI
-let samange = new (require('samanage'))({
+let samanage = new (require('samanage'))({
     stateID: {
         resolved: 68591,
         on_hold: 68590,
@@ -27,7 +27,7 @@ let samange = new (require('samanage'))({
 });
 
 let incidents = samanage.incidents();
-let MessageObject = require('MessageTemplate');
+let MessageObject = samanage.messageObject;
 
 
 let testMessage = new MessageObject()
