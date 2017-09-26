@@ -26,11 +26,24 @@ let samanage = new (require('samanage'))({
     }
 });
 
+// Bearer token
+// You can get the bearer token from viewing your own profile as an admin in Samanage
+samanage.auth({
+    bearer: "xxxxxxx"
+});
+
+// Basic auth
+samanage.auth({
+    user: "user@domain.com",
+    pass: "password"
+});
+
+
 let incidents = samanage.incidents();
-let MessageObject = samanage.messageObject;
+let MessageTemplate = samanage.MessageTemplate;
 
 
-let testMessage = new MessageObject()
+let testMessage = new MessageTemplate()
                         .setTitle("Test title")
                         .setDescription("Test description")
                         .getMessageObject;
