@@ -1,6 +1,6 @@
 {
   "name": "samanage",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Samanage API implementation for NodeJS",
   "main": "samanage.js",
   "scripts": {
