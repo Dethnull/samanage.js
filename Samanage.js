@@ -40,9 +40,10 @@ let Samanage = function (config) {
     };
 
     this._options = {
-        waitTime:   (config && config.waitTime)   ? config.waitTime      : 5000,
-        sendEmail:  (config && config.sendEmail)  ? config.sendEmail     : true,
-        layout:     (config && config.layout)     ? config.layout        : "long",
+        waitTime:       (config && config.waitTime)      ? config.waitTime      : 5000,
+        sendEmail:      (config && config.sendEmail)     ? config.sendEmail     : true,
+        layout:         (config && config.layout)        ? config.layout        : "long",
+        incidentRetry:  (config && config.incidentRetry) ? config.incidentRetry : true,
         stateID: {
             "resolved":       (config && config.stateID.resolved)       ? config.stateID.resolved        : '',
             "assigned":       (config && config.stateID.assigned)       ? config.stateID.assigned        : '',
