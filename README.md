@@ -53,3 +53,18 @@ incidents.create(testMessage).then(function(result) {
 });
 
 ```
+
+
+#Searching
+```js
+let incidents = samanage.incidents();
+
+// Search can be a samanage URI or an object of key: value pairs. These pairs must be a field in your samanage instance to search
+incidents.search({title: "test title*"}).then(function(res) {
+    // returns res, body, page#
+    
+    console.log(res.body);
+})
+
+
+```

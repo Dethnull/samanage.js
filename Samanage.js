@@ -4,13 +4,13 @@ let smConfig = require(__dirname + '/package.json');
 
 let bunyan  = require('bunyan');
 let request = require('request');
-
+let path = require('path');
 let logstream = require('./logstream');
 
 let logger  = bunyan.createLogger({
     name: 'Samanage.js v' + smConfig.version,
     streams: [{
-        path: "./logs/Samanage.js.log",
+        path: path.join(__dirname, "/logs/Samanage.js.log"),
         level: "debug"
     },{
         type: "raw",
