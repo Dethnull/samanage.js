@@ -10,9 +10,6 @@ let logstream = require('./logstream');
 let logger  = bunyan.createLogger({
     name: 'Samanage.js v' + smConfig.version,
     streams: [{
-        path: path.join(__dirname, "/logs/Samanage.js.log"),
-        level: "debug"
-    },{
         type: "raw",
         stream: logstream,
         level: "info"
